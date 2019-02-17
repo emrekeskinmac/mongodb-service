@@ -1,7 +1,7 @@
 const MESG = require('mesg-js').service()
 var MongoClient = require('mongodb').MongoClient;
+const DATABASE_NAME = process.env.DATABASE_NAME
 
-const DATABASE_NAME = process.env.DATABASE_NAME || "db"
 const main = async () => {
   let mongodb;
   mongodb = await MongoClient.connect("mongodb://mongodb:27017/", { useNewUrlParser: true });

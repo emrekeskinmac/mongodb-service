@@ -1,6 +1,9 @@
 name: "MongoDB Service"
-sid: mongodb
+sid: com.mesg.mongodb
 description: "MongoDB is a NOSQL Database"
+configuration:
+  env:
+    - DATABASE_NAME=db
 tasks: 
   write:
     description: "Write data to collection"
