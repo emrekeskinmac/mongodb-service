@@ -1,0 +1,98 @@
+name: "MongoDB Service"
+sid: mongodb
+description: "MongoDB is a NOSQL Database"
+tasks: 
+  write:
+    description: "Write data to collection"
+    inputs:
+      collectionName:
+        description: "Collection name"
+        type: String
+      saveObject:
+        description: "Data to be saved"
+        type: Object
+    outputs:
+      success:
+        data:
+          id:
+            description: "When the data is successfully write"
+            type: String
+      failure:
+        data:
+          message:
+            description: "An error occurs"
+            type: String    
+  read:
+    description: "Read data to collection"
+    inputs:
+      collectionName:
+        description: "Collection name"
+        type: String
+      findObject:
+        description: "Data to be read"
+        type: Object
+      filterObject:
+        description: "Filter object"
+        type: Object
+        optional: true
+    outputs:
+      success:
+        data:
+          data:
+            description: "When the data is successfully read"
+            type: Any
+      failure:
+        data:
+          message:
+            description: "An error occurs"
+            type: String    
+  update:
+    description: "Update data to collection"
+    inputs:
+      collectionName:
+        description: "Collection Name"
+        type: String
+      findObject:
+        description: "Data to be update"
+        type: Object
+      updateObject:
+        description: "New Data"
+        type: Object
+    outputs:
+      success:
+        data:
+          result:
+            description: "When the data is successfully update"
+            type: Boolean
+      failure:
+        data:
+          message:
+            description: "An error occurs"
+            type: String    
+  delete:
+    description: "Delete data to collection"
+    inputs:
+      collectionName:
+        description: "Collection Name"
+        type: String
+      findObject:
+        description: "Data to be deleted"
+        type: Object
+    outputs:
+      success:
+        data:
+          result:
+            description: "When the data is successfully delete"
+            type: Boolean
+      failure:
+        data:
+          message:
+            description: "An error occurs"
+            type: String    
+dependencies:
+  mongodb:
+    image: mongo:4
+    ports:
+      - "27017:27017"
+    volumes:
+      - /var/lib/mongodb
