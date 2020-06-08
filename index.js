@@ -1,4 +1,4 @@
-const MESG = require('mesg-js').service()
+const MESG = new (require('@liteflow/service'))()
 var MongoClient = require('mongodb').MongoClient;
 const DATABASE_NAME = process.env.DATABASE_NAME
 
